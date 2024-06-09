@@ -1,0 +1,2368 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Reco-System-Movie},
+  pdfauthor={Yuliana Naddaf},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Reco-System-Movie}
+\author{Yuliana Naddaf}
+\date{2024-06-07}
+
+\begin{document}
+\maketitle
+
+\hypertarget{the-following-project-presents-a-detailed-analysis-of-the-performance-of-various-movie-recommendation-models-using-the-movielens-10m-dataset.}{%
+\paragraph{The following project presents a detailed analysis of the
+performance of various movie recommendation models using the MovieLens
+10M
+dataset.}\label{the-following-project-presents-a-detailed-analysis-of-the-performance-of-various-movie-recommendation-models-using-the-movielens-10m-dataset.}}
+
+\hypertarget{linear-regression-model-mean-baseline}{%
+\subparagraph{\texorpdfstring{\textbf{Linear Regression Model (Mean
+Baseline):}}{Linear Regression Model (Mean Baseline):}}\label{linear-regression-model-mean-baseline}}
+
+\hypertarget{the-average-of-the-scores-in-the-training-set-is-calculated.}{%
+\subparagraph{* The average of the scores in the training set is
+calculated.}\label{the-average-of-the-scores-in-the-training-set-is-calculated.}}
+
+\hypertarget{predictions-are-made-using-this-average-for-the-validation-set.}{%
+\subparagraph{* Predictions are made using this average for the
+validation
+set.}\label{predictions-are-made-using-this-average-for-the-validation-set.}}
+
+\hypertarget{the-model-is-evaluated-using-metrics-such-as-mae-mse-and-rmse.}{%
+\subparagraph{* The model is evaluated using metrics such as MAE, MSE
+and
+RMSE.}\label{the-model-is-evaluated-using-metrics-such-as-mae-mse-and-rmse.}}
+
+\hypertarget{this-approach-establishes-a-baseline-for-comparing-other-more-complex-models.}{%
+\subparagraph{* This approach establishes a baseline for comparing other
+more complex
+models.}\label{this-approach-establishes-a-baseline-for-comparing-other-more-complex-models.}}
+
+\hypertarget{linear-regression-model-with-film-bias}{%
+\subparagraph{\texorpdfstring{\textbf{Linear Regression Model with Film
+Bias:}}{Linear Regression Model with Film Bias:}}\label{linear-regression-model-with-film-bias}}
+
+\hypertarget{the-bias-is-calculated-for-each-movie-in-the-training-set.}{%
+\subparagraph{* The bias is calculated for each movie in the training
+set.}\label{the-bias-is-calculated-for-each-movie-in-the-training-set.}}
+
+\hypertarget{this-bias-is-incorporated-into-a-linear-regression-model-to-make-predictions.}{%
+\subparagraph{* This bias is incorporated into a linear regression model
+to make
+predictions.}\label{this-bias-is-incorporated-into-a-linear-regression-model-to-make-predictions.}}
+
+\hypertarget{the-model-is-evaluated-using-the-same-evaluation-metrics.}{%
+\subparagraph{* The model is evaluated using the same evaluation
+metrics.}\label{the-model-is-evaluated-using-the-same-evaluation-metrics.}}
+
+\hypertarget{linear-regression-model-with-movie-and-user-bias}{%
+\subparagraph{\texorpdfstring{\textbf{Linear Regression Model with Movie
+and User
+Bias:}}{Linear Regression Model with Movie and User Bias:}}\label{linear-regression-model-with-movie-and-user-bias}}
+
+\hypertarget{the-bias-is-calculated-for-both-movies-and-users-in-the-training-set.}{%
+\subparagraph{* The bias is calculated for both movies and users in the
+training
+set.}\label{the-bias-is-calculated-for-both-movies-and-users-in-the-training-set.}}
+
+\hypertarget{these-biases-are-incorporated-into-a-linear-regression-model-to-make-predictions.}{%
+\subparagraph{* These biases are incorporated into a linear regression
+model to make
+predictions.}\label{these-biases-are-incorporated-into-a-linear-regression-model-to-make-predictions.}}
+
+\hypertarget{the-model-is-evaluated-using-the-same-evaluation-metrics.-1}{%
+\subparagraph{* The model is evaluated using the same evaluation
+metrics.}\label{the-model-is-evaluated-using-the-same-evaluation-metrics.-1}}
+
+\hypertarget{linear-regression-model-with-regularized-bias}{%
+\subparagraph{\texorpdfstring{\textbf{Linear Regression Model with
+Regularized
+Bias:}}{Linear Regression Model with Regularized Bias:}}\label{linear-regression-model-with-regularized-bias}}
+
+\hypertarget{the-code-begins-by-installing-and-loading-the-necessary-libraries.-it-then-defines-three-primary-functions-compute_biases-predict_ratings-and-evaluate_model.-the-compute_biases-function-calculates-the-average-rating-and-biases-for-movies-and-users-returning-these-values-in-a-list.-the-predict_ratings-function-uses-these-biases-to-predict-ratings-for-the-validation-dataset.-the-evaluate_model-function-integrates-these-two-functions-computing-the-biases-and-using-them-to-predict-ratings-ultimately-calculating-and-returning-the-rmse.}{%
+\subparagraph{* The code begins by installing and loading the necessary
+libraries. It then defines three primary functions: compute\_biases,
+predict\_ratings, and evaluate\_model. The compute\_biases function
+calculates the average rating and biases for movies and users, returning
+these values in a list. The predict\_ratings function uses these biases
+to predict ratings for the validation dataset. The evaluate\_model
+function integrates these two functions, computing the biases and using
+them to predict ratings, ultimately calculating and returning the
+RMSE.}\label{the-code-begins-by-installing-and-loading-the-necessary-libraries.-it-then-defines-three-primary-functions-compute_biases-predict_ratings-and-evaluate_model.-the-compute_biases-function-calculates-the-average-rating-and-biases-for-movies-and-users-returning-these-values-in-a-list.-the-predict_ratings-function-uses-these-biases-to-predict-ratings-for-the-validation-dataset.-the-evaluate_model-function-integrates-these-two-functions-computing-the-biases-and-using-them-to-predict-ratings-ultimately-calculating-and-returning-the-rmse.}}
+
+\hypertarget{in-the-main-execution-block-the-structure-and-missing-values-of-the-training-and-validacion-datasets-are-checked.-a-range-of-lambda-values-is-defined-and-for-each-lambda-the-rmse-is-calculated-using-the-evaluate_model-function.-the-lambda-with-the-lowest-rmse-is-selected-as-the-best-lambda.-final-biases-are-computed-using-this-best-lambda-and-these-biases-are-then-used-to-predict-ratings-for-the-validation-dataset.-the-model-is-evaluated-by-calculating-mae-mse-and-rmse-and-the-results-are-printed.}{%
+\subparagraph{* In the main execution block, the structure and missing
+values of the training and validacion datasets are checked. A range of
+lambda values is defined, and for each lambda, the RMSE is calculated
+using the evaluate\_model function. The lambda with the lowest RMSE is
+selected as the best lambda. Final biases are computed using this best
+lambda, and these biases are then used to predict ratings for the
+validation dataset. The model is evaluated by calculating MAE, MSE, and
+RMSE, and the results are
+printed.}\label{in-the-main-execution-block-the-structure-and-missing-values-of-the-training-and-validacion-datasets-are-checked.-a-range-of-lambda-values-is-defined-and-for-each-lambda-the-rmse-is-calculated-using-the-evaluate_model-function.-the-lambda-with-the-lowest-rmse-is-selected-as-the-best-lambda.-final-biases-are-computed-using-this-best-lambda-and-these-biases-are-then-used-to-predict-ratings-for-the-validation-dataset.-the-model-is-evaluated-by-calculating-mae-mse-and-rmse-and-the-results-are-printed.}}
+
+\hypertarget{overall-the-code-efficiently-implements-a-regularization-model-by-iteratively-finding-the-best-lambda-computing-biases-predicting-ratings-and-evaluating-the-models-performance.}{%
+\subparagraph{* Overall, the code efficiently implements a
+regularization model by iteratively finding the best lambda, computing
+biases, predicting ratings, and evaluating the model's
+performance.}\label{overall-the-code-efficiently-implements-a-regularization-model-by-iteratively-finding-the-best-lambda-computing-biases-predicting-ratings-and-evaluating-the-models-performance.}}
+
+\hypertarget{factorization-matrix}{%
+\subparagraph{\texorpdfstring{\textbf{Factorization
+Matrix:}}{Factorization Matrix:}}\label{factorization-matrix}}
+
+\hypertarget{the-training-and-test-sets-are-converted-into-a-format-compatible-with-the-factorization-matrix.}{%
+\subparagraph{* The training and test sets are converted into a format
+compatible with the factorization
+matrix.}\label{the-training-and-test-sets-are-converted-into-a-format-compatible-with-the-factorization-matrix.}}
+
+\hypertarget{the-factorization-matrix-is-used-to-make-predictions.}{%
+\subparagraph{* The factorization matrix is used to make
+predictions.}\label{the-factorization-matrix-is-used-to-make-predictions.}}
+
+\hypertarget{the-model-is-evaluated-using-the-same-evaluation-metrics.-2}{%
+\subparagraph{* The model is evaluated using the same evaluation
+metrics.}\label{the-model-is-evaluated-using-the-same-evaluation-metrics.-2}}
+
+\hypertarget{each-model-is-evaluated-on-both-the-validation-set-and-the-final-test-set-final_holdout_test.-the-evaluation-results-are-compiled-in-a-table-that-shows-the-mae-mse-and-rmse-metrics-for-each-model-in-both-data-sets.-this-approach-allows-the-performance-of-different-movie-recommendation-models-to-be-compared-in-terms-of-predictive-accuracy.}{%
+\subparagraph{Each model is evaluated on both the validation set and the
+final test set (final\_holdout\_test). The evaluation results are
+compiled in a table that shows the MAE, MSE, and RMSE metrics for each
+model in both data sets. This approach allows the performance of
+different movie recommendation models to be compared in terms of
+predictive
+accuracy.}\label{each-model-is-evaluated-on-both-the-validation-set-and-the-final-test-set-final_holdout_test.-the-evaluation-results-are-compiled-in-a-table-that-shows-the-mae-mse-and-rmse-metrics-for-each-model-in-both-data-sets.-this-approach-allows-the-performance-of-different-movie-recommendation-models-to-be-compared-in-terms-of-predictive-accuracy.}}
+
+\hypertarget{in-conclusion-the-results-show-that-more-advanced-models-such-as-those-that-incorporate-both-movie-and-user-biases-along-with-regularization-or-matrix-factorization-significantly-outperform-the-simple-baseline-model-that-uses-only-the-average-of-the-ratings.-these-advanced-models-achieve-significant-reductions-in-mean-absolute-error-mae-mean-squared-error-mse-and-root-mean-squared-error-rmse-compared-to-the-base-model-indicating-an-improvement-in-recommendation-accuracy.-of-movies.}{%
+\subparagraph{In conclusion the results show that more advanced models,
+such as those that incorporate both movie and user biases, along with
+regularization or matrix factorization, significantly outperform the
+simple baseline model that uses only the average of the ratings. These
+advanced models achieve significant reductions in Mean Absolute Error
+(MAE), Mean Squared Error (MSE), and Root Mean Squared Error (RMSE)
+compared to the base model, indicating an improvement in recommendation
+accuracy. of
+movies.}\label{in-conclusion-the-results-show-that-more-advanced-models-such-as-those-that-incorporate-both-movie-and-user-biases-along-with-regularization-or-matrix-factorization-significantly-outperform-the-simple-baseline-model-that-uses-only-the-average-of-the-ratings.-these-advanced-models-achieve-significant-reductions-in-mean-absolute-error-mae-mean-squared-error-mse-and-root-mean-squared-error-rmse-compared-to-the-base-model-indicating-an-improvement-in-recommendation-accuracy.-of-movies.}}
+
+\hypertarget{furthermore-matrix-factorization-emerges-as-the-most-effective-technique-with-the-lowest-values-of-mae-mse-and-rmse-in-both-data-sets-suggesting-that-it-more-accurately-captures-the-complex-interactions-between-users-and-movies-in-the-data-set.-movielens-10m.}{%
+\subparagraph{Furthermore, matrix factorization emerges as the most
+effective technique, with the lowest values of MAE, MSE, and RMSE in
+both data sets, suggesting that it more accurately captures the complex
+interactions between users and movies in the data set. MovieLens
+10M.}\label{furthermore-matrix-factorization-emerges-as-the-most-effective-technique-with-the-lowest-values-of-mae-mse-and-rmse-in-both-data-sets-suggesting-that-it-more-accurately-captures-the-complex-interactions-between-users-and-movies-in-the-data-set.-movielens-10m.}}
+
+\hypertarget{in-summary-the-results-suggest-that-more-complex-models-which-consider-both-movie-and-user-bias-along-with-regularization-or-matrix-factorization-tend-to-provide-better-movie-recommendation-accuracy-compared-to-a-simple-baseline-approach.}{%
+\subparagraph{In summary, the results suggest that more complex models,
+which consider both movie and user bias, along with regularization or
+matrix factorization, tend to provide better movie recommendation
+accuracy compared to a simple baseline
+approach.}\label{in-summary-the-results-suggest-that-more-complex-models-which-consider-both-movie-and-user-bias-along-with-regularization-or-matrix-factorization-tend-to-provide-better-movie-recommendation-accuracy-compared-to-a-simple-baseline-approach.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{options}\NormalTok{(}\AttributeTok{repos =} \FunctionTok{c}\NormalTok{(}\AttributeTok{CRAN =} \StringTok{"https://cloud.r{-}project.org/"}\NormalTok{))}
+
+\CommentTok{\# Create edx and final\_holdout\_test sets}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Note: this process could take a couple of minutes}
+
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{require}\NormalTok{(tidyverse)) }\FunctionTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{, }\AttributeTok{repos =} \StringTok{"http://cran.us.r{-}project.org"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Le chargement a nécessité le package : tidyverse
+\end{verbatim}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.4     v readr     2.1.4
+## v forcats   1.0.0     v stringr   1.5.1
+## v ggplot2   3.5.1     v tibble    3.2.1
+## v lubridate 1.9.3     v tidyr     1.3.0
+## v purrr     1.0.2     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{require}\NormalTok{(caret)) }\FunctionTok{install.packages}\NormalTok{(}\StringTok{"caret"}\NormalTok{, }\AttributeTok{repos =} \StringTok{"http://cran.us.r{-}project.org"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Le chargement a nécessité le package : caret
+## Le chargement a nécessité le package : lattice
+## 
+## Attachement du package : 'caret'
+## 
+## L'objet suivant est masqué depuis 'package:purrr':
+## 
+##     lift
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"tibble"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: le package 'tibble' est en cours d'utilisation et ne sera pas installé
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"stringr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: le package 'stringr' est en cours d'utilisation et ne sera pas
+## installé
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(stringr)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(caret)}
+\FunctionTok{library}\NormalTok{(tibble)}
+
+
+\CommentTok{\# MovieLens 10M dataset:}
+\CommentTok{\# https://grouplens.org/datasets/movielens/10m/}
+\CommentTok{\# http://files.grouplens.org/datasets/movielens/ml{-}10m.zip}
+
+\FunctionTok{options}\NormalTok{(}\AttributeTok{timeout =} \DecValTok{120}\NormalTok{)}
+
+\NormalTok{dl }\OtherTok{\textless{}{-}} \StringTok{"ml{-}10M100K.zip"}
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{file.exists}\NormalTok{(dl))}
+  \FunctionTok{download.file}\NormalTok{(}\StringTok{"https://files.grouplens.org/datasets/movielens/ml{-}10m.zip"}\NormalTok{, dl)}
+
+\NormalTok{ratings\_file }\OtherTok{\textless{}{-}} \StringTok{"ml{-}10M100K/ratings.dat"}
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{file.exists}\NormalTok{(ratings\_file))}
+  \FunctionTok{unzip}\NormalTok{(dl, ratings\_file)}
+
+\NormalTok{movies\_file }\OtherTok{\textless{}{-}} \StringTok{"ml{-}10M100K/movies.dat"}
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{file.exists}\NormalTok{(movies\_file))}
+  \FunctionTok{unzip}\NormalTok{(dl, movies\_file)}
+
+
+\NormalTok{ratings }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{str\_split}\NormalTok{(}\FunctionTok{read\_lines}\NormalTok{(ratings\_file), }\FunctionTok{fixed}\NormalTok{(}\StringTok{"::"}\NormalTok{), }\AttributeTok{simplify =} \ConstantTok{TRUE}\NormalTok{),}
+                         \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(ratings) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"userId"}\NormalTok{, }\StringTok{"movieId"}\NormalTok{, }\StringTok{"rating"}\NormalTok{, }\StringTok{"timestamp"}\NormalTok{)}
+\NormalTok{ratings }\OtherTok{\textless{}{-}}\NormalTok{ ratings }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{userId =} \FunctionTok{as.integer}\NormalTok{(userId),}
+         \AttributeTok{movieId =} \FunctionTok{as.integer}\NormalTok{(movieId),}
+         \AttributeTok{rating =} \FunctionTok{as.numeric}\NormalTok{(rating),}
+         \AttributeTok{timestamp =} \FunctionTok{as.integer}\NormalTok{(timestamp))}
+
+\FunctionTok{head}\NormalTok{(ratings)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   userId movieId rating timestamp
+## 1      1     122      5 838985046
+## 2      1     185      5 838983525
+## 3      1     231      5 838983392
+## 4      1     292      5 838983421
+## 5      1     316      5 838983392
+## 6      1     329      5 838983392
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{movies }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{str\_split}\NormalTok{(}\FunctionTok{read\_lines}\NormalTok{(movies\_file), }\FunctionTok{fixed}\NormalTok{(}\StringTok{"::"}\NormalTok{), }\AttributeTok{simplify =} \ConstantTok{TRUE}\NormalTok{),}
+                        \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(movies) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"movieId"}\NormalTok{, }\StringTok{"title"}\NormalTok{, }\StringTok{"genres"}\NormalTok{)}
+\NormalTok{movies }\OtherTok{\textless{}{-}}\NormalTok{ movies }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{movieId =} \FunctionTok{as.integer}\NormalTok{(movieId))}
+
+\FunctionTok{head}\NormalTok{(movies)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   movieId                              title
+## 1       1                   Toy Story (1995)
+## 2       2                     Jumanji (1995)
+## 3       3            Grumpier Old Men (1995)
+## 4       4           Waiting to Exhale (1995)
+## 5       5 Father of the Bride Part II (1995)
+## 6       6                        Heat (1995)
+##                                        genres
+## 1 Adventure|Animation|Children|Comedy|Fantasy
+## 2                  Adventure|Children|Fantasy
+## 3                              Comedy|Romance
+## 4                        Comedy|Drama|Romance
+## 5                                      Comedy
+## 6                       Action|Crime|Thriller
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{movielens }\OtherTok{\textless{}{-}} \FunctionTok{left\_join}\NormalTok{(ratings, movies, }\AttributeTok{by =} \StringTok{"movieId"}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(movielens)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   userId movieId rating timestamp                         title
+## 1      1     122      5 838985046              Boomerang (1992)
+## 2      1     185      5 838983525               Net, The (1995)
+## 3      1     231      5 838983392          Dumb & Dumber (1994)
+## 4      1     292      5 838983421               Outbreak (1995)
+## 5      1     316      5 838983392               Stargate (1994)
+## 6      1     329      5 838983392 Star Trek: Generations (1994)
+##                          genres
+## 1                Comedy|Romance
+## 2         Action|Crime|Thriller
+## 3                        Comedy
+## 4  Action|Drama|Sci-Fi|Thriller
+## 5       Action|Adventure|Sci-Fi
+## 6 Action|Adventure|Drama|Sci-Fi
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Final hold{-}out test set will be 10\% of MovieLens data}
+\CommentTok{\# set.seed(1, sample.kind="Rounding") \# if using R 3.6 or later}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{) }\CommentTok{\# if using R 3.5 or earlier}
+\NormalTok{test\_index }\OtherTok{\textless{}{-}} \FunctionTok{createDataPartition}\NormalTok{(}\AttributeTok{y =}\NormalTok{ movielens}\SpecialCharTok{$}\NormalTok{rating, }\AttributeTok{times =} \DecValTok{1}\NormalTok{, }\AttributeTok{p =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{list =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{edx }\OtherTok{\textless{}{-}}\NormalTok{ movielens[}\SpecialCharTok{{-}}\NormalTok{test\_index,]}
+\NormalTok{temp }\OtherTok{\textless{}{-}}\NormalTok{ movielens[test\_index,]}
+
+\CommentTok{\# Make sure userId and movieId in final hold{-}out test set are also in edx set}
+\NormalTok{final\_holdout\_test }\OtherTok{\textless{}{-}}\NormalTok{ temp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{semi\_join}\NormalTok{(edx, }\AttributeTok{by =} \StringTok{"movieId"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{semi\_join}\NormalTok{(edx, }\AttributeTok{by =} \StringTok{"userId"}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(final\_holdout\_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   userId movieId rating  timestamp
+## 1      1     588    5.0  838983339
+## 2      2    1210    4.0  868245644
+## 3      2    1544    3.0  868245920
+## 4      3     151    4.5 1133571026
+## 5      3    1288    3.0 1133571035
+## 6      3    5299    3.0 1164885617
+##                                                     title
+## 1                                          Aladdin (1992)
+## 2       Star Wars: Episode VI - Return of the Jedi (1983)
+## 3 Lost World: Jurassic Park, The (Jurassic Park 2) (1997)
+## 4                                          Rob Roy (1995)
+## 5                               This Is Spinal Tap (1984)
+## 6                         My Big Fat Greek Wedding (2002)
+##                                        genres
+## 1 Adventure|Animation|Children|Comedy|Musical
+## 2                     Action|Adventure|Sci-Fi
+## 3     Action|Adventure|Horror|Sci-Fi|Thriller
+## 4                    Action|Drama|Romance|War
+## 5                              Comedy|Musical
+## 6                              Comedy|Romance
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add rows removed from final hold{-}out test set back into edx set}
+\NormalTok{removed }\OtherTok{\textless{}{-}} \FunctionTok{anti\_join}\NormalTok{(temp, final\_holdout\_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining with `by = join_by(userId, movieId, rating, timestamp, title, genres)`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{edx }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(edx, removed)}
+
+\FunctionTok{rm}\NormalTok{(dl, ratings, movies, test\_index, temp, movielens, removed)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# splits the dataset edx into two parts: a training set that contains 80\% of the data and}
+\CommentTok{\# a validation set that contains the remaining 20\%.}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{train\_index }\OtherTok{\textless{}{-}} \FunctionTok{createDataPartition}\NormalTok{(}\AttributeTok{y =}\NormalTok{ edx}\SpecialCharTok{$}\NormalTok{rating, }\AttributeTok{times =} \DecValTok{1}\NormalTok{, }\AttributeTok{p =} \FloatTok{0.8}\NormalTok{, }\AttributeTok{list =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{training }\OtherTok{\textless{}{-}}\NormalTok{ edx[train\_index,]}
+\NormalTok{validacion }\OtherTok{\textless{}{-}}\NormalTok{ edx[}\SpecialCharTok{{-}}\NormalTok{train\_index,]}
+
+
+\CommentTok{\# LINEAR REGRESION MODEL}
+\CommentTok{\# Mean Baseline}
+\CommentTok{\# Baseline model predicts the average of the ratings from the training set for all data in the}
+\CommentTok{\# validation set, evaluates its performance using various metrics, and stores and displays the }
+\CommentTok{\# results.}
+
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"Metrics"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Installation du package dans 'C:/Users/nadda/AppData/Local/R/win-library/4.2'
+## (car 'lib' n'est pas spécifié)
+\end{verbatim}
+
+\begin{verbatim}
+## le package 'Metrics' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+## 
+## Les packages binaires téléchargés sont dans
+##  C:\Users\nadda\AppData\Local\Temp\Rtmpgz7cDr\downloaded_packages
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(Metrics)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attachement du package : 'Metrics'
+\end{verbatim}
+
+\begin{verbatim}
+## Les objets suivants sont masqués depuis 'package:caret':
+## 
+##     precision, recall
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the average of the ratings in the training set}
+\NormalTok{mean\_rating }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(training}\SpecialCharTok{$}\NormalTok{rating)}
+
+\CommentTok{\# Create a prediction vector using the calculated average}
+\NormalTok{predictions }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(mean\_rating, }\FunctionTok{nrow}\NormalTok{(validacion))}
+
+\CommentTok{\# Evaluate the model and store the results in a tibble}
+\NormalTok{valuation }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{Models =} \StringTok{"Mean baseline model (validation)"}\NormalTok{,}
+  \AttributeTok{MAE =} \FunctionTok{mae}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, predictions),}
+  \AttributeTok{MSE =} \FunctionTok{mse}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, predictions),}
+  \AttributeTok{RMSE =} \FunctionTok{rmse}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, predictions)}
+\NormalTok{)}
+
+\CommentTok{\# Print the evaluations}
+\FunctionTok{print}\NormalTok{(valuation)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 4
+##   Models                             MAE   MSE  RMSE
+##   <chr>                            <dbl> <dbl> <dbl>
+## 1 Mean baseline model (validation) 0.856  1.13  1.06
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Final Evaluation with the final\_holdout\_test}
+\CommentTok{\# Calculate the average of the ratings in the full dataset}
+\NormalTok{mean\_rating }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(edx}\SpecialCharTok{$}\NormalTok{rating)}
+
+\CommentTok{\# Create a prediction vector using the calculated average}
+\NormalTok{predictions }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(mean\_rating, }\FunctionTok{nrow}\NormalTok{(final\_holdout\_test))}
+
+\CommentTok{\# Evaluate the model and store the results in a data frame}
+\NormalTok{valuation }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Models =} \StringTok{"Mean baseline model (final\_holdout\_test)"}\NormalTok{,}
+  \AttributeTok{MAE =} \FunctionTok{mae}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, predictions),}
+  \AttributeTok{MSE =} \FunctionTok{mse}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, predictions),}
+  \AttributeTok{RMSE =} \FunctionTok{rmse}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, predictions),}
+  \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}
+\NormalTok{)}
+
+\CommentTok{\# Print the evaluations}
+\FunctionTok{print}\NormalTok{(valuation)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                     Models       MAE     MSE     RMSE
+## 1 Mean baseline model (final_holdout_test) 0.8560101 1.12498 1.060651
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# MOVIE BIAS  Caracteristica efect s\_movie}
+\CommentTok{\# Bias per movie }
+\CommentTok{\# The code calculates a rating prediction model that incorporates the bias of each movie }
+\CommentTok{\# and evaluates its performance using error metrics.}
+
+\CommentTok{\# Calculate the bias for each movie}
+\NormalTok{bias\_movie }\OtherTok{\textless{}{-}}\NormalTok{ training }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(movieId) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{s\_movie =} \FunctionTok{mean}\NormalTok{(rating }\SpecialCharTok{{-}}\NormalTok{ mean\_rating),}
+            \AttributeTok{s\_movie\_isolated =} \FunctionTok{mean}\NormalTok{(rating))}
+
+\CommentTok{\# Show the first 20 rows of the movie biases}
+\FunctionTok{head}\NormalTok{(bias\_movie, }\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 20 x 3
+##    movieId s_movie s_movie_isolated
+##      <int>   <dbl>            <dbl>
+##  1       1  0.412              3.92
+##  2       2 -0.323              3.19
+##  3       3 -0.358              3.15
+##  4       4 -0.651              2.86
+##  5       5 -0.425              3.09
+##  6       6  0.299              3.81
+##  7       7 -0.147              3.37
+##  8       8 -0.379              3.13
+##  9       9 -0.525              2.99
+## 10      10 -0.0828             3.43
+## 11      11  0.164              3.68
+## 12      12 -0.928              2.58
+## 13      13 -0.345              3.17
+## 14      14 -0.0638             3.45
+## 15      15 -0.782              2.73
+## 16      16  0.243              3.76
+## 17      17  0.468              3.98
+## 18      18 -0.176              3.34
+## 19      19 -0.945              2.57
+## 20      20 -0.655              2.86
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Build the linear model (mean + movie bias)}
+\NormalTok{predicted\_ratings }\OtherTok{\textless{}{-}}\NormalTok{ validacion }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(bias\_movie, }\AttributeTok{by =} \StringTok{"movieId"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{prediction =}\NormalTok{ mean\_rating }\SpecialCharTok{+}\NormalTok{ s\_movie)}
+
+\CommentTok{\# Replace NA with the average value}
+\NormalTok{predicted\_ratings}\SpecialCharTok{$}\NormalTok{prediction[}\FunctionTok{is.na}\NormalTok{(predicted\_ratings}\SpecialCharTok{$}\NormalTok{prediction)] }\OtherTok{\textless{}{-}}\NormalTok{ mean\_rating}
+
+\CommentTok{\# Evaluate the model and store the results in a tibble}
+\NormalTok{valuation }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(valuation,}
+             \FunctionTok{tibble}\NormalTok{(}\AttributeTok{Models =} \StringTok{"Model linear mean + s\_movie (validacion)"}\NormalTok{,}
+             \AttributeTok{MAE =} \FunctionTok{mae}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, predicted\_ratings}\SpecialCharTok{$}\NormalTok{prediction),}
+             \AttributeTok{MSE =} \FunctionTok{mse}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, predicted\_ratings}\SpecialCharTok{$}\NormalTok{prediction),}
+             \AttributeTok{RMSE =} \FunctionTok{rmse}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, predicted\_ratings}\SpecialCharTok{$}\NormalTok{prediction)))}
+
+\CommentTok{\# Print the evaluations}
+\FunctionTok{print}\NormalTok{(valuation)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                     Models       MAE       MSE      RMSE
+## 1 Mean baseline model (final_holdout_test) 0.8560101 1.1249798 1.0606506
+## 2 Model linear mean + s_movie (validacion) 0.7381239 0.8913586 0.9441179
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Final Evaluation with the final\_holdout\_test}
+\CommentTok{\# Calculate the bias for each movie}
+\NormalTok{bias\_movie }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(movieId) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{s\_movie =} \FunctionTok{mean}\NormalTok{(rating }\SpecialCharTok{{-}}\NormalTok{ mean\_rating),}
+            \AttributeTok{s\_movie\_isolated =} \FunctionTok{mean}\NormalTok{(rating))}
+
+\CommentTok{\# Show the first 20 rows of the movie biases}
+\FunctionTok{head}\NormalTok{(bias\_movie, }\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 20 x 3
+##    movieId s_movie s_movie_isolated
+##      <int>   <dbl>            <dbl>
+##  1       1  0.414              3.93
+##  2       2 -0.310              3.20
+##  3       3 -0.362              3.15
+##  4       4 -0.632              2.88
+##  5       5 -0.434              3.08
+##  6       6  0.299              3.81
+##  7       7 -0.147              3.37
+##  8       8 -0.395              3.12
+##  9       9 -0.517              3.00
+## 10      10 -0.0878             3.42
+## 11      11  0.165              3.68
+## 12      12 -0.936              2.58
+## 13      13 -0.328              3.18
+## 14      14 -0.0661             3.45
+## 15      15 -0.793              2.72
+## 16      16  0.239              3.75
+## 17      17  0.466              3.98
+## 18      18 -0.180              3.33
+## 19      19 -0.937              2.58
+## 20      20 -0.651              2.86
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Construct the linear model (mean + movie bias)}
+\NormalTok{predicted\_ratings }\OtherTok{\textless{}{-}}\NormalTok{ final\_holdout\_test }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(bias\_movie, }\AttributeTok{by =} \StringTok{"movieId"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{prediction =}\NormalTok{ mean\_rating }\SpecialCharTok{+}\NormalTok{ s\_movie)}
+
+\CommentTok{\# Replace NA with the average value}
+\NormalTok{predicted\_ratings}\SpecialCharTok{$}\NormalTok{prediction[}\FunctionTok{is.na}\NormalTok{(predicted\_ratings}\SpecialCharTok{$}\NormalTok{prediction)] }\OtherTok{\textless{}{-}}\NormalTok{ mean\_rating}
+
+\CommentTok{\# Evaluate the model and store the results in a tibble}
+\NormalTok{valuation }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(valuation, }
+                       \FunctionTok{tibble}\NormalTok{(}\AttributeTok{Models =} \StringTok{"Model linear mean + s\_movie (final\_holdout\_test)"}\NormalTok{,}
+                       \AttributeTok{MAE =} \FunctionTok{mae}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, predicted\_ratings}\SpecialCharTok{$}\NormalTok{prediction),}
+                       \AttributeTok{MSE =} \FunctionTok{mse}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, predicted\_ratings}\SpecialCharTok{$}\NormalTok{prediction),}
+                       \AttributeTok{RMSE =} \FunctionTok{rmse}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, predicted\_ratings}\SpecialCharTok{$}\NormalTok{prediction)))}
+
+\CommentTok{\# Print the evaluations}
+\FunctionTok{print}\NormalTok{(valuation)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                             Models       MAE       MSE
+## 1         Mean baseline model (final_holdout_test) 0.8560101 1.1249798
+## 2         Model linear mean + s_movie (validacion) 0.7381239 0.8913586
+## 3 Model linear mean + s_movie (final_holdout_test) 0.7381881 0.8905784
+##        RMSE
+## 1 1.0606506
+## 2 0.9441179
+## 3 0.9437046
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Bias per user}
+\CommentTok{\# The code calculates a rating prediction model that incorporates both movie and user biases, }
+\CommentTok{\# evaluates its performance using error metrics, and updates the evaluation results.}
+\CommentTok{\# Calculate the bias of each user}
+
+\NormalTok{bias\_user }\OtherTok{\textless{}{-}}\NormalTok{ training }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(bias\_movie, }\AttributeTok{by =} \StringTok{\textquotesingle{}movieId\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(userId) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{s\_usuario =} \FunctionTok{mean}\NormalTok{(rating }\SpecialCharTok{{-}}\NormalTok{ mean\_rating }\SpecialCharTok{{-}}\NormalTok{ s\_movie),}
+            \AttributeTok{s\_usuario\_isolated =} \FunctionTok{mean}\NormalTok{(rating))}
+
+\CommentTok{\# Show the first 20 rows of user biases}
+\FunctionTok{head}\NormalTok{(bias\_user, }\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 20 x 3
+##    userId s_usuario s_usuario_isolated
+##     <int>     <dbl>              <dbl>
+##  1      1   1.70                  5   
+##  2      2  -0.212                 3.29
+##  3      3   0.357                 4   
+##  4      4   0.624                 4   
+##  5      5   0.00235               3.8 
+##  6      6   0.266                 3.79
+##  7      7   0.0321                3.90
+##  8      8   0.196                 3.39
+##  9      9   0.0547                3.88
+## 10     10   0.0624                3.77
+## 11     11   0.609                 4.22
+## 12     12   0.143                 3.49
+## 13     13  -0.0227                3.22
+## 14     14  -0.00922               3.40
+## 15     16   0.215                 3.8 
+## 16     17   0.410                 4   
+## 17     18   0.0996                3.44
+## 18     19   0.0242                3.68
+## 19     22  -0.101                 3.41
+## 20     23   0.371                 4.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Build the linear model (mean + movie bias + user bias)}
+\NormalTok{predicted\_ratings\_with2bias }\OtherTok{\textless{}{-}}\NormalTok{ validacion }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(bias\_movie, }\AttributeTok{by =} \StringTok{\textquotesingle{}movieId\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(bias\_user, }\AttributeTok{by =} \StringTok{\textquotesingle{}userId\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{prediction =}\NormalTok{ mean\_rating }\SpecialCharTok{+}\NormalTok{ s\_movie }\SpecialCharTok{+}\NormalTok{ s\_usuario)}
+
+\CommentTok{\# Replace NA with the average value}
+\NormalTok{predicted\_ratings\_with2bias}\SpecialCharTok{$}\NormalTok{prediction[}\FunctionTok{is.na}\NormalTok{(predicted\_ratings\_with2bias}\SpecialCharTok{$}\NormalTok{prediction)] }\OtherTok{\textless{}{-}}\NormalTok{ mean\_rating}
+
+
+\CommentTok{\# Evaluate the model and store the results in a tibble}
+\NormalTok{valuation }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(valuation,}
+                       \FunctionTok{tibble}\NormalTok{(}\AttributeTok{Models =} \StringTok{"Model linear mean/s\_movie/s\_usuario (validation)"}\NormalTok{,}
+                       \AttributeTok{MAE =} \FunctionTok{mae}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, predicted\_ratings\_with2bias}\SpecialCharTok{$}\NormalTok{prediction),}
+                       \AttributeTok{MSE =} \FunctionTok{mse}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, predicted\_ratings\_with2bias}\SpecialCharTok{$}\NormalTok{prediction),}
+                       \AttributeTok{RMSE =} \FunctionTok{rmse}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, predicted\_ratings\_with2bias}\SpecialCharTok{$}\NormalTok{prediction)))}
+
+\CommentTok{\# Print the evaluations}
+\FunctionTok{print}\NormalTok{(valuation)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                             Models       MAE       MSE
+## 1         Mean baseline model (final_holdout_test) 0.8560101 1.1249798
+## 2         Model linear mean + s_movie (validacion) 0.7381239 0.8913586
+## 3 Model linear mean + s_movie (final_holdout_test) 0.7381881 0.8905784
+## 4 Model linear mean/s_movie/s_usuario (validation) 0.6687190 0.7486483
+##        RMSE
+## 1 1.0606506
+## 2 0.9441179
+## 3 0.9437046
+## 4 0.8652446
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Final Evaluation with the final\_holdout\_test}
+\NormalTok{bias\_user }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(bias\_movie, }\AttributeTok{by =} \StringTok{\textquotesingle{}movieId\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(userId) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{s\_usuario =} \FunctionTok{mean}\NormalTok{(rating }\SpecialCharTok{{-}}\NormalTok{ mean\_rating }\SpecialCharTok{{-}}\NormalTok{ s\_movie),}
+            \AttributeTok{s\_usuario\_isolated =} \FunctionTok{mean}\NormalTok{(rating))}
+
+\CommentTok{\# Show the first 20 rows of user biases}
+\FunctionTok{head}\NormalTok{(bias\_user, }\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 20 x 3
+##    userId s_usuario s_usuario_isolated
+##     <int>     <dbl>              <dbl>
+##  1      1   1.71                  5   
+##  2      2  -0.385                 3.17
+##  3      3   0.306                 3.98
+##  4      4   0.661                 4.06
+##  5      5   0.0190                3.84
+##  6      6   0.322                 3.90
+##  7      7   0.0715                3.92
+##  8      8   0.199                 3.39
+##  9      9   0.0477                3.85
+## 10     10   0.0778                3.81
+## 11     11   0.661                 4.25
+## 12     12   0.111                 3.42
+## 13     13   0.00454               3.24
+## 14     14  -0.0245                3.37
+## 15     16   0.186                 3.74
+## 16     17   0.310                 3.95
+## 17     18   0.123                 3.47
+## 18     19   0.0305                3.70
+## 19     22  -0.105                 3.42
+## 20     23   0.424                 4.21
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Construct the linear model (mean + movie bias + user bias)}
+\NormalTok{predicted\_ratings\_with2bias }\OtherTok{\textless{}{-}}\NormalTok{ final\_holdout\_test }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(bias\_movie, }\AttributeTok{by =} \StringTok{\textquotesingle{}movieId\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(bias\_user, }\AttributeTok{by =} \StringTok{\textquotesingle{}userId\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{prediction =}\NormalTok{ mean\_rating }\SpecialCharTok{+}\NormalTok{ s\_movie }\SpecialCharTok{+}\NormalTok{ s\_usuario)}
+
+\CommentTok{\# Replace NA with the average value}
+\NormalTok{predicted\_ratings\_with2bias}\SpecialCharTok{$}\NormalTok{prediction[}\FunctionTok{is.na}\NormalTok{(predicted\_ratings\_with2bias}\SpecialCharTok{$}\NormalTok{prediction)] }\OtherTok{\textless{}{-}}\NormalTok{ mean\_rating}
+
+\CommentTok{\# Evaluate the model and store the results in a tibble}
+\NormalTok{valuation }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(valuation,}
+                      \FunctionTok{tibble}\NormalTok{(}\AttributeTok{Models =} \StringTok{"Model linear mean/s\_movie/s\_usuario (final\_hold\_out)"}\NormalTok{,}
+                      \AttributeTok{MAE =} \FunctionTok{mae}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, predicted\_ratings\_with2bias}\SpecialCharTok{$}\NormalTok{prediction),}
+                      \AttributeTok{MSE =} \FunctionTok{mse}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, predicted\_ratings\_with2bias}\SpecialCharTok{$}\NormalTok{prediction),}
+                      \AttributeTok{RMSE =} \FunctionTok{rmse}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, predicted\_ratings\_with2bias}\SpecialCharTok{$}\NormalTok{prediction)))}
+
+\CommentTok{\# Print the evaluations}
+\FunctionTok{print}\NormalTok{(valuation)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                                 Models       MAE       MSE
+## 1             Mean baseline model (final_holdout_test) 0.8560101 1.1249798
+## 2             Model linear mean + s_movie (validacion) 0.7381239 0.8913586
+## 3     Model linear mean + s_movie (final_holdout_test) 0.7381881 0.8905784
+## 4     Model linear mean/s_movie/s_usuario (validation) 0.6687190 0.7486483
+## 5 Model linear mean/s_movie/s_usuario (final_hold_out) 0.6694863 0.7491472
+##        RMSE
+## 1 1.0606506
+## 2 0.9441179
+## 3 0.9437046
+## 4 0.8652446
+## 5 0.8655329
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#MODELING WITH REGULARIZATION}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"ggthemes"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Installation du package dans 'C:/Users/nadda/AppData/Local/R/win-library/4.2'
+## (car 'lib' n'est pas spécifié)
+\end{verbatim}
+
+\begin{verbatim}
+## le package 'ggthemes' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+## 
+## Les packages binaires téléchargés sont dans
+##  C:\Users\nadda\AppData\Local\Temp\Rtmpgz7cDr\downloaded_packages
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"recosystem"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Installation du package dans 'C:/Users/nadda/AppData/Local/R/win-library/4.2'
+## (car 'lib' n'est pas spécifié)
+\end{verbatim}
+
+\begin{verbatim}
+## le package 'recosystem' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: impossible de supprimer l'installation précédente du package
+## 'recosystem'
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in file.copy(savedcopy, lib, recursive = TRUE): problème lors de la
+## copie de
+## C:\Users\nadda\AppData\Local\R\win-library\4.2\00LOCK\recosystem\libs\x64\recosystem.dll
+## vers
+## C:\Users\nadda\AppData\Local\R\win-library\4.2\recosystem\libs\x64\recosystem.dll:
+## Permission denied
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: 'recosystem' restauré
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Les packages binaires téléchargés sont dans
+##  C:\Users\nadda\AppData\Local\Temp\Rtmpgz7cDr\downloaded_packages
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: le package 'dplyr' est en cours d'utilisation et ne sera pas installé
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"cowplot"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Installation du package dans 'C:/Users/nadda/AppData/Local/R/win-library/4.2'
+## (car 'lib' n'est pas spécifié)
+\end{verbatim}
+
+\begin{verbatim}
+## le package 'cowplot' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+## 
+## Les packages binaires téléchargés sont dans
+##  C:\Users\nadda\AppData\Local\Temp\Rtmpgz7cDr\downloaded_packages
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"data.table"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Installation du package dans 'C:/Users/nadda/AppData/Local/R/win-library/4.2'
+## (car 'lib' n'est pas spécifié)
+\end{verbatim}
+
+\begin{verbatim}
+## le package 'data.table' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: impossible de supprimer l'installation précédente du package
+## 'data.table'
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in file.copy(savedcopy, lib, recursive = TRUE): problème lors de la
+## copie de
+## C:\Users\nadda\AppData\Local\R\win-library\4.2\00LOCK\data.table\libs\x64\data_table.dll
+## vers
+## C:\Users\nadda\AppData\Local\R\win-library\4.2\data.table\libs\x64\data_table.dll:
+## Permission denied
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: 'data.table' restauré
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Les packages binaires téléchargés sont dans
+##  C:\Users\nadda\AppData\Local\Temp\Rtmpgz7cDr\downloaded_packages
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"Metrics"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: le package 'Metrics' est en cours d'utilisation et ne sera pas
+## installé
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Loading the required libraries}
+\FunctionTok{library}\NormalTok{(ggthemes)}
+\FunctionTok{library}\NormalTok{(recosystem)}
+\FunctionTok{library}\NormalTok{(data.table)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attachement du package : 'data.table'
+\end{verbatim}
+
+\begin{verbatim}
+## Les objets suivants sont masqués depuis 'package:lubridate':
+## 
+##     hour, isoweek, mday, minute, month, quarter, second, wday, week,
+##     yday, year
+\end{verbatim}
+
+\begin{verbatim}
+## Les objets suivants sont masqués depuis 'package:dplyr':
+## 
+##     between, first, last
+\end{verbatim}
+
+\begin{verbatim}
+## L'objet suivant est masqué depuis 'package:purrr':
+## 
+##     transpose
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(cowplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attachement du package : 'cowplot'
+\end{verbatim}
+
+\begin{verbatim}
+## L'objet suivant est masqué depuis 'package:ggthemes':
+## 
+##     theme_map
+\end{verbatim}
+
+\begin{verbatim}
+## L'objet suivant est masqué depuis 'package:lubridate':
+## 
+##     stamp
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(Metrics)}
+
+\NormalTok{compute\_biases }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(training, lambda) \{}
+\NormalTok{  avg\_rating }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(training}\SpecialCharTok{$}\NormalTok{rating)}
+
+\NormalTok{  movie\_b }\OtherTok{\textless{}{-}}\NormalTok{ training }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{group\_by}\NormalTok{(movieId) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summarize}\NormalTok{(}\AttributeTok{s\_movie =} \FunctionTok{sum}\NormalTok{(rating }\SpecialCharTok{{-}}\NormalTok{ avg\_rating) }\SpecialCharTok{/}\NormalTok{ (}\FunctionTok{n}\NormalTok{() }\SpecialCharTok{+}\NormalTok{ lambda), }\AttributeTok{.groups =} \StringTok{\textquotesingle{}drop\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{  user\_b }\OtherTok{\textless{}{-}}\NormalTok{ training }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{left\_join}\NormalTok{(movie\_b, }\AttributeTok{by =} \StringTok{"movieId"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{group\_by}\NormalTok{(userId) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summarize}\NormalTok{(}\AttributeTok{s\_usuario =} \FunctionTok{sum}\NormalTok{(rating }\SpecialCharTok{{-}}\NormalTok{ avg\_rating }\SpecialCharTok{{-}}\NormalTok{ s\_movie) }\SpecialCharTok{/}\NormalTok{ (}\FunctionTok{n}\NormalTok{() }\SpecialCharTok{+}\NormalTok{ lambda), }\AttributeTok{.groups =} \StringTok{\textquotesingle{}drop\textquotesingle{}}\NormalTok{)}
+
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{movie\_b =}\NormalTok{ movie\_b, }\AttributeTok{user\_b =}\NormalTok{ user\_b, }\AttributeTok{avg\_rating =}\NormalTok{ avg\_rating))}
+\NormalTok{\}}
+
+\NormalTok{predict\_ratings }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(validacion, biases) \{}
+\NormalTok{  predictions }\OtherTok{\textless{}{-}}\NormalTok{ validacion }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{left\_join}\NormalTok{(biases}\SpecialCharTok{$}\NormalTok{movie\_b, }\AttributeTok{by =} \StringTok{"movieId"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{left\_join}\NormalTok{(biases}\SpecialCharTok{$}\NormalTok{user\_b, }\AttributeTok{by =} \StringTok{"userId"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{pred =}\NormalTok{ biases}\SpecialCharTok{$}\NormalTok{avg\_rating }\SpecialCharTok{+}\NormalTok{ s\_movie }\SpecialCharTok{+}\NormalTok{ s\_usuario) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{pull}\NormalTok{(pred)}
+  
+\NormalTok{  predictions[}\FunctionTok{is.na}\NormalTok{(predictions)] }\OtherTok{\textless{}{-}}\NormalTok{ biases}\SpecialCharTok{$}\NormalTok{avg\_rating}
+
+  \FunctionTok{return}\NormalTok{(predictions)}
+\NormalTok{\}}
+
+\NormalTok{evaluate\_model }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(lambda, training, validacion) \{}
+\NormalTok{  biases }\OtherTok{\textless{}{-}} \FunctionTok{compute\_biases}\NormalTok{(training, lambda)}
+\NormalTok{  predictions }\OtherTok{\textless{}{-}} \FunctionTok{predict\_ratings}\NormalTok{(validacion, biases)}
+\NormalTok{  rmse\_value }\OtherTok{\textless{}{-}} \FunctionTok{rmse}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, predictions)}
+  \FunctionTok{return}\NormalTok{(rmse\_value)}
+\NormalTok{\}}
+
+\CommentTok{\# Ensure there are no missing values in the datasets}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Checking for missing values in training dataset:"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Checking for missing values in training dataset:"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(training)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Checking for missing values in validation dataset:"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Checking for missing values in validation dataset:"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(validacion)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Range of lambda values to test}
+\NormalTok{lambda\_values }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{, }\FloatTok{0.20}\NormalTok{)}
+
+\CommentTok{\# Calculate RMSE for each lambda with debugging}
+\NormalTok{rmse\_values }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(lambda\_values, evaluate\_model, }\AttributeTok{training =}\NormalTok{ training, }\AttributeTok{validacion =}\NormalTok{ validacion)}
+
+\CommentTok{\# Create a tibble to store lambda and RMSE values}
+\NormalTok{rmse\_results }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{Lambda =}\NormalTok{ lambda\_values, }\AttributeTok{RMSE =}\NormalTok{ rmse\_values)}
+\FunctionTok{print}\NormalTok{(rmse\_results)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 76 x 2
+##    Lambda  RMSE
+##     <dbl> <dbl>
+##  1    0   0.867
+##  2    0.2 0.866
+##  3    0.4 0.866
+##  4    0.6 0.866
+##  5    0.8 0.866
+##  6    1   0.866
+##  7    1.2 0.866
+##  8    1.4 0.866
+##  9    1.6 0.866
+## 10    1.8 0.866
+## # i 66 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Select the best lambda}
+\NormalTok{best\_lambda }\OtherTok{\textless{}{-}}\NormalTok{ lambda\_values[}\FunctionTok{which.min}\NormalTok{(rmse\_values)]}
+\FunctionTok{print}\NormalTok{(best\_lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compute biases with the best lambda}
+\NormalTok{final\_biases }\OtherTok{\textless{}{-}} \FunctionTok{compute\_biases}\NormalTok{(training, best\_lambda)}
+
+\CommentTok{\# Predict ratings using the final biases}
+\NormalTok{final\_predictions }\OtherTok{\textless{}{-}} \FunctionTok{predict\_ratings}\NormalTok{(validacion, final\_biases)}
+
+\CommentTok{\# Evaluate the model}
+\NormalTok{valuation }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{Models =} \StringTok{"Linear model with regularized bias (validacion)"}\NormalTok{,}
+  \AttributeTok{MAE =} \FunctionTok{mae}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, final\_predictions),}
+  \AttributeTok{MSE =} \FunctionTok{mse}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, final\_predictions),}
+  \AttributeTok{RMSE =} \FunctionTok{rmse}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, final\_predictions)}
+\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(valuation)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 4
+##   Models                                            MAE   MSE  RMSE
+##   <chr>                                           <dbl> <dbl> <dbl>
+## 1 Linear model with regularized bias (validacion) 0.670 0.750 0.866
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# PRUEBA SEGUNDA FINAL\_HOLDOUT\_TEST}
+
+\NormalTok{compute\_biases }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(edx, lambda) \{}
+\NormalTok{  avg\_rating }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(edx}\SpecialCharTok{$}\NormalTok{rating)}
+
+\NormalTok{  movie\_b }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{group\_by}\NormalTok{(movieId) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summarize}\NormalTok{(}\AttributeTok{s\_movie =} \FunctionTok{sum}\NormalTok{(rating }\SpecialCharTok{{-}}\NormalTok{ avg\_rating) }\SpecialCharTok{/}\NormalTok{ (}\FunctionTok{n}\NormalTok{() }\SpecialCharTok{+}\NormalTok{ lambda), }\AttributeTok{.groups =} \StringTok{\textquotesingle{}drop\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{  user\_b }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{left\_join}\NormalTok{(movie\_b, }\AttributeTok{by =} \StringTok{"movieId"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{group\_by}\NormalTok{(userId) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summarize}\NormalTok{(}\AttributeTok{s\_usuario =} \FunctionTok{sum}\NormalTok{(rating }\SpecialCharTok{{-}}\NormalTok{ avg\_rating }\SpecialCharTok{{-}}\NormalTok{ s\_movie) }\SpecialCharTok{/}\NormalTok{ (}\FunctionTok{n}\NormalTok{() }\SpecialCharTok{+}\NormalTok{ lambda), }\AttributeTok{.groups =} \StringTok{\textquotesingle{}drop\textquotesingle{}}\NormalTok{)}
+
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{movie\_b =}\NormalTok{ movie\_b, }\AttributeTok{user\_b =}\NormalTok{ user\_b, }\AttributeTok{avg\_rating =}\NormalTok{ avg\_rating))}
+\NormalTok{\}}
+
+\NormalTok{predict\_ratings }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(final\_holdout\_test, biases) \{}
+\NormalTok{  predictions }\OtherTok{\textless{}{-}}\NormalTok{ final\_holdout\_test }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{left\_join}\NormalTok{(biases}\SpecialCharTok{$}\NormalTok{movie\_b, }\AttributeTok{by =} \StringTok{"movieId"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{left\_join}\NormalTok{(biases}\SpecialCharTok{$}\NormalTok{user\_b, }\AttributeTok{by =} \StringTok{"userId"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{pred =}\NormalTok{ biases}\SpecialCharTok{$}\NormalTok{avg\_rating }\SpecialCharTok{+}\NormalTok{ s\_movie }\SpecialCharTok{+}\NormalTok{ s\_usuario) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{pull}\NormalTok{(pred)}
+  
+\NormalTok{  predictions[}\FunctionTok{is.na}\NormalTok{(predictions)] }\OtherTok{\textless{}{-}}\NormalTok{ biases}\SpecialCharTok{$}\NormalTok{avg\_rating}
+
+  \FunctionTok{return}\NormalTok{(predictions)}
+\NormalTok{\}}
+
+\NormalTok{evaluate\_model }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(lambda, edx, final\_holdout\_test) \{}
+\NormalTok{  biases }\OtherTok{\textless{}{-}} \FunctionTok{compute\_biases}\NormalTok{(edx, lambda)}
+\NormalTok{  predictions }\OtherTok{\textless{}{-}} \FunctionTok{predict\_ratings}\NormalTok{(final\_holdout\_test, biases)}
+\NormalTok{  rmse\_value }\OtherTok{\textless{}{-}} \FunctionTok{rmse}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, predictions)}
+  \FunctionTok{return}\NormalTok{(rmse\_value)}
+\NormalTok{\}}
+
+
+\CommentTok{\# Ensure there are no missing values in the datasets}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Checking for missing values in edx:"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Checking for missing values in edx:"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(edx)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Checking for missing values in final\_holdout\_test:"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Checking for missing values in final_holdout_test:"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(final\_holdout\_test)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Range of lambda values to test}
+\NormalTok{lambda\_values }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{, }\FloatTok{0.20}\NormalTok{)}
+
+\CommentTok{\# Calculate RMSE for each lambda with debugging}
+\NormalTok{rmse\_values }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(lambda\_values, evaluate\_model, }\AttributeTok{edx =}\NormalTok{ edx, }\AttributeTok{final\_holdout\_test =}\NormalTok{ final\_holdout\_test)}
+
+\CommentTok{\# Create a tibble to store lambda and RMSE values}
+\NormalTok{rmse\_results }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{Lambda =}\NormalTok{ lambda\_values, }\AttributeTok{RMSE =}\NormalTok{ rmse\_values)}
+\FunctionTok{print}\NormalTok{(rmse\_results)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 76 x 2
+##    Lambda  RMSE
+##     <dbl> <dbl>
+##  1    0   0.866
+##  2    0.2 0.865
+##  3    0.4 0.865
+##  4    0.6 0.865
+##  5    0.8 0.865
+##  6    1   0.865
+##  7    1.2 0.865
+##  8    1.4 0.865
+##  9    1.6 0.865
+## 10    1.8 0.865
+## # i 66 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Select the best lambda}
+\NormalTok{best\_lambda }\OtherTok{\textless{}{-}}\NormalTok{ lambda\_values[}\FunctionTok{which.min}\NormalTok{(rmse\_values)]}
+\FunctionTok{print}\NormalTok{(best\_lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compute biases with the best lambda}
+\NormalTok{final\_biases }\OtherTok{\textless{}{-}} \FunctionTok{compute\_biases}\NormalTok{(edx, best\_lambda)}
+
+\CommentTok{\# Predict ratings using the final biases}
+\NormalTok{final\_predictions }\OtherTok{\textless{}{-}} \FunctionTok{predict\_ratings}\NormalTok{(final\_holdout\_test, final\_biases)}
+
+\CommentTok{\# Evaluate the model}
+\NormalTok{valuation }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{Models =} \StringTok{"Linear model with regularized bias (validation)"}\NormalTok{,}
+  \AttributeTok{MAE =} \FunctionTok{mae}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, final\_predictions),}
+  \AttributeTok{MSE =} \FunctionTok{mse}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, final\_predictions),}
+  \AttributeTok{RMSE =} \FunctionTok{rmse}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, final\_predictions)}
+\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(valuation)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 4
+##   Models                                            MAE   MSE  RMSE
+##   <chr>                                           <dbl> <dbl> <dbl>
+## 1 Linear model with regularized bias (validation) 0.670 0.748 0.865
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#MATRIX DE FACTORIZATION}
+\CommentTok{\# The training and validacion sets need to be converted into recosystem input format}
+
+\FunctionTok{library}\NormalTok{(recosystem)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(Metrics)}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Convert training and validacion sets into recosystem input format}
+\NormalTok{entrenamiento }\OtherTok{\textless{}{-}} \FunctionTok{with}\NormalTok{(training, }\FunctionTok{data\_memory}\NormalTok{(}\AttributeTok{user\_index =}\NormalTok{ userId, }\AttributeTok{item\_index =}\NormalTok{ movieId, }\AttributeTok{rating =}\NormalTok{ rating))}
+\NormalTok{prueba }\OtherTok{\textless{}{-}} \FunctionTok{with}\NormalTok{(validacion, }\FunctionTok{data\_memory}\NormalTok{(}\AttributeTok{user\_index =}\NormalTok{ userId, }\AttributeTok{item\_index =}\NormalTok{ movieId, }\AttributeTok{rating =}\NormalTok{ rating))}
+
+\CommentTok{\# Create the model object}
+\NormalTok{create\_model }\OtherTok{\textless{}{-}} \FunctionTok{Reco}\NormalTok{()}
+
+\CommentTok{\# Define tuning options}
+\NormalTok{tune\_combination }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{25}\NormalTok{), }\AttributeTok{lrate =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.2}\NormalTok{, }\FloatTok{0.3}\NormalTok{), }\AttributeTok{nthread =} \DecValTok{4}\NormalTok{, }\AttributeTok{niter =} \DecValTok{10}\NormalTok{)}
+
+\CommentTok{\# Tune the model}
+\NormalTok{best\_tune }\OtherTok{\textless{}{-}}\NormalTok{ create\_model}\SpecialCharTok{$}\FunctionTok{tune}\NormalTok{(entrenamiento, }\AttributeTok{opts =}\NormalTok{ tune\_combination)}
+
+\CommentTok{\# Train the model with the best tuning parameters}
+\NormalTok{training\_options }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(best\_tune}\SpecialCharTok{$}\NormalTok{min, }\AttributeTok{nthread =} \DecValTok{4}\NormalTok{, }\AttributeTok{niter =} \DecValTok{20}\NormalTok{)}
+\NormalTok{create\_model}\SpecialCharTok{$}\FunctionTok{train}\NormalTok{(entrenamiento, }\AttributeTok{opts =}\NormalTok{ training\_options)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## iter      tr_rmse          obj
+##    0       0.9901   9.9832e+06
+##    1       0.8796   8.0854e+06
+##    2       0.8476   7.5236e+06
+##    3       0.8245   7.1527e+06
+##    4       0.8073   6.9029e+06
+##    5       0.7943   6.7196e+06
+##    6       0.7836   6.5827e+06
+##    7       0.7746   6.4712e+06
+##    8       0.7671   6.3812e+06
+##    9       0.7604   6.3045e+06
+##   10       0.7548   6.2423e+06
+##   11       0.7498   6.1879e+06
+##   12       0.7453   6.1409e+06
+##   13       0.7412   6.0995e+06
+##   14       0.7377   6.0632e+06
+##   15       0.7344   6.0316e+06
+##   16       0.7314   6.0031e+06
+##   17       0.7287   5.9793e+06
+##   18       0.7263   5.9563e+06
+##   19       0.7239   5.9344e+06
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Make predictions}
+\NormalTok{predictions }\OtherTok{\textless{}{-}}\NormalTok{ create\_model}\SpecialCharTok{$}\FunctionTok{predict}\NormalTok{(prueba, }\FunctionTok{out\_memory}\NormalTok{())}
+
+\CommentTok{\# Calculate evaluation metrics}
+\NormalTok{mae\_value }\OtherTok{\textless{}{-}} \FunctionTok{mae}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, predictions)}
+\NormalTok{mse\_value }\OtherTok{\textless{}{-}} \FunctionTok{mse}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, predictions)}
+\NormalTok{rmse\_value }\OtherTok{\textless{}{-}} \FunctionTok{rmse}\NormalTok{(validacion}\SpecialCharTok{$}\NormalTok{rating, predictions)}
+
+\CommentTok{\# Add the results to the evaluation tibble}
+\NormalTok{valuation }\OtherTok{\textless{}{-}}\NormalTok{ valuation }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_row}\NormalTok{(}\AttributeTok{Models =} \StringTok{"Matrix of factorization (validacion)"}\NormalTok{,}
+          \AttributeTok{MAE =}\NormalTok{ mae\_value,}
+          \AttributeTok{MSE =}\NormalTok{ mse\_value,}
+          \AttributeTok{RMSE =}\NormalTok{ rmse\_value)}
+
+\CommentTok{\# Print the evaluation results}
+\FunctionTok{print}\NormalTok{(valuation)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 4
+##   Models                                            MAE   MSE  RMSE
+##   <chr>                                           <dbl> <dbl> <dbl>
+## 1 Linear model with regularized bias (validation) 0.670 0.748 0.865
+## 2 Matrix of factorization (validacion)            0.610 0.627 0.792
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Final Evaluation with the final\_holdout\_test set }
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Convert training and validacion sets into recosystem input format}
+\NormalTok{entrenamiento }\OtherTok{\textless{}{-}} \FunctionTok{with}\NormalTok{(edx, }\FunctionTok{data\_memory}\NormalTok{(}\AttributeTok{user\_index =}\NormalTok{ userId, }\AttributeTok{item\_index =}\NormalTok{ movieId, }\AttributeTok{rating =}\NormalTok{ rating))}
+\NormalTok{prueba }\OtherTok{\textless{}{-}} \FunctionTok{with}\NormalTok{(final\_holdout\_test, }\FunctionTok{data\_memory}\NormalTok{(}\AttributeTok{user\_index =}\NormalTok{ userId, }\AttributeTok{item\_index =}\NormalTok{ movieId, }\AttributeTok{rating =}\NormalTok{ rating))}
+
+\CommentTok{\# Create the model object}
+\NormalTok{create\_model }\OtherTok{\textless{}{-}} \FunctionTok{Reco}\NormalTok{()}
+
+\CommentTok{\# Define tuning options}
+\NormalTok{tune\_combination }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{25}\NormalTok{), }\AttributeTok{lrate =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.2}\NormalTok{, }\FloatTok{0.3}\NormalTok{), }\AttributeTok{nthread =} \DecValTok{4}\NormalTok{, }\AttributeTok{niter =} \DecValTok{10}\NormalTok{)}
+
+\CommentTok{\# Tune the model}
+\NormalTok{best\_tune }\OtherTok{\textless{}{-}}\NormalTok{ create\_model}\SpecialCharTok{$}\FunctionTok{tune}\NormalTok{(entrenamiento, }\AttributeTok{opts =}\NormalTok{ tune\_combination)}
+
+\CommentTok{\# Train the model with the best tuning parameters}
+\NormalTok{training\_options }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(best\_tune}\SpecialCharTok{$}\NormalTok{min, }\AttributeTok{nthread =} \DecValTok{4}\NormalTok{, }\AttributeTok{niter =} \DecValTok{20}\NormalTok{)}
+\NormalTok{create\_model}\SpecialCharTok{$}\FunctionTok{train}\NormalTok{(entrenamiento, }\AttributeTok{opts =}\NormalTok{ training\_options)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## iter      tr_rmse          obj
+##    0       0.9704   1.1976e+07
+##    1       0.8723   9.8785e+06
+##    2       0.8389   9.1771e+06
+##    3       0.8165   8.7482e+06
+##    4       0.8011   8.4738e+06
+##    5       0.7895   8.2748e+06
+##    6       0.7798   8.1262e+06
+##    7       0.7717   8.0063e+06
+##    8       0.7651   7.9088e+06
+##    9       0.7594   7.8315e+06
+##   10       0.7545   7.7643e+06
+##   11       0.7502   7.7084e+06
+##   12       0.7464   7.6596e+06
+##   13       0.7430   7.6178e+06
+##   14       0.7400   7.5822e+06
+##   15       0.7373   7.5493e+06
+##   16       0.7349   7.5215e+06
+##   17       0.7326   7.4959e+06
+##   18       0.7305   7.4755e+06
+##   19       0.7286   7.4512e+06
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Make predictions}
+\NormalTok{predictions }\OtherTok{\textless{}{-}}\NormalTok{ create\_model}\SpecialCharTok{$}\FunctionTok{predict}\NormalTok{(prueba, }\FunctionTok{out\_memory}\NormalTok{())}
+
+\CommentTok{\# Calculate evaluation metrics}
+\NormalTok{mae\_value }\OtherTok{\textless{}{-}} \FunctionTok{mae}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, predictions)}
+\NormalTok{mse\_value }\OtherTok{\textless{}{-}} \FunctionTok{mse}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, predictions)}
+\NormalTok{rmse\_value }\OtherTok{\textless{}{-}} \FunctionTok{rmse}\NormalTok{(final\_holdout\_test}\SpecialCharTok{$}\NormalTok{rating, predictions)}
+
+\CommentTok{\# Add the results to the evaluation tibble}
+\NormalTok{valuation }\OtherTok{\textless{}{-}}\NormalTok{ valuation }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_row}\NormalTok{(}\AttributeTok{Models =} \StringTok{"Matrix of factorization (final\_holdout\_test)"}\NormalTok{,}
+          \AttributeTok{MAE =}\NormalTok{ mae\_value,}
+          \AttributeTok{MSE =}\NormalTok{ mse\_value,}
+          \AttributeTok{RMSE =}\NormalTok{ rmse\_value)}
+
+\CommentTok{\# Print the evaluation results}
+\FunctionTok{print}\NormalTok{(valuation)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 4
+##   Models                                            MAE   MSE  RMSE
+##   <chr>                                           <dbl> <dbl> <dbl>
+## 1 Linear model with regularized bias (validation) 0.670 0.748 0.865
+## 2 Matrix of factorization (validacion)            0.610 0.627 0.792
+## 3 Matrix of factorization (final_holdout_test)    0.605 0.615 0.784
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# EDA}
+\CommentTok{\# Ratings Distribution}
+\CommentTok{\# The plot shows that most movie ratings are high, with 4 being the most frequent, followed by 3 and 5. }
+\CommentTok{\# Lower ratings (1 and 2) are much less common, indicating that users generally rate movies positively.}
+
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(edx, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ rating)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{fill =} \StringTok{"cyan"}\NormalTok{, }\AttributeTok{color =} \StringTok{"magenta"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Ratings Distribution"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Calificación"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{System-Recommendation-Movie_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Rating Average per genre }
+\CommentTok{\# The plot shows the average movie rating for different genres. Horror, Sci{-}Fi, and Children }
+\CommentTok{\# genres have the highest average ratings, indicating they are well{-}received by viewers. }
+\CommentTok{\# On the other hand, Film{-}Noir, Documentary, and War genres have the lowest average ratings,}
+\CommentTok{\# suggesting they are less popular among the audience. Overall, the plot highlights significant}
+\CommentTok{\# differences in viewer preferences across various movie genres.}
+
+\NormalTok{edx\_genres }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{separate\_rows}\NormalTok{(genres, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{|"}\NormalTok{)}
+
+\NormalTok{average\_rating\_per\_genre }\OtherTok{\textless{}{-}}\NormalTok{ edx\_genres }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(genres) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{avg\_rating =} \FunctionTok{mean}\NormalTok{(rating))}
+
+\FunctionTok{ggplot}\NormalTok{(average\_rating\_per\_genre, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(genres, }\SpecialCharTok{{-}}\NormalTok{avg\_rating), }\AttributeTok{y =}\NormalTok{ avg\_rating)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"purple"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{coord\_flip}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Rating average per genre "}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Género"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Calificación Promedio"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{System-Recommendation-Movie_files/figure-latex/unnamed-chunk-6-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Rating per year }
+
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(stringr)}
+
+\CommentTok{\# This plot highlights how the average ratings of movies have changed over time, showing that }
+\CommentTok{\# starting from the mid{-}1970s, there is a noticeable decline in average ratings, dropping}
+\CommentTok{\# below 3.8 compared to earlier decades.}
+
+\CommentTok{\# Extract the year from the movie titles}
+\NormalTok{edx }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{year =} \FunctionTok{str\_extract}\NormalTok{(title, }\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{4\}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{)"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{year =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{str\_replace\_all}\NormalTok{(year, }\StringTok{"[()]"}\NormalTok{, }\StringTok{""}\NormalTok{)))}
+
+\CommentTok{\# Have a look if the years were extracted correctly}
+\FunctionTok{head}\NormalTok{(edx)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   userId movieId rating timestamp                         title
+## 1      1     122      5 838985046              Boomerang (1992)
+## 2      1     185      5 838983525               Net, The (1995)
+## 3      1     231      5 838983392          Dumb & Dumber (1994)
+## 4      1     292      5 838983421               Outbreak (1995)
+## 5      1     316      5 838983392               Stargate (1994)
+## 6      1     329      5 838983392 Star Trek: Generations (1994)
+##                          genres year
+## 1                Comedy|Romance 1992
+## 2         Action|Crime|Thriller 1995
+## 3                        Comedy 1994
+## 4  Action|Drama|Sci-Fi|Thriller 1995
+## 5       Action|Adventure|Sci-Fi 1994
+## 6 Action|Adventure|Drama|Sci-Fi 1994
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the average rating per year}
+\NormalTok{average\_rating\_per\_year }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(year) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{avg\_rating =} \FunctionTok{mean}\NormalTok{(rating, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\AttributeTok{count =} \FunctionTok{n}\NormalTok{())}
+
+\CommentTok{\# Check the results}
+\FunctionTok{head}\NormalTok{(average\_rating\_per\_year)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 3
+##    year avg_rating count
+##   <dbl>      <dbl> <int>
+## 1  1915       3.25   180
+## 2  1916       3.80    96
+## 3  1917       3.79    33
+## 4  1918       3.64    70
+## 5  1919       3.36   163
+## 6  1920       3.91   575
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{\# Create the plot of average rating per year}
+\FunctionTok{ggplot}\NormalTok{(average\_rating\_per\_year, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ avg\_rating)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"steelblue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"cyan"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Average Rating per Year"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Year"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Average Rating"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{System-Recommendation-Movie_files/figure-latex/unnamed-chunk-6-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Genre Distribution}
+\CommentTok{\# Count the frequency of each genre}
+\CommentTok{\# This plot highlights the distribution of movie genres in the dataset, showing which genres }
+\CommentTok{\# are most and least frequent based on user ratings.}
+
+\NormalTok{genre\_count }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{separate\_rows}\NormalTok{(genres, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{|"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(genres) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(count))}
+
+\CommentTok{\# Create the bar chart}
+\FunctionTok{ggplot}\NormalTok{(genre\_count, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(genres, }\SpecialCharTok{{-}}\NormalTok{count), }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"skyblue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{coord\_flip}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Frequency of Each Genre"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Genre"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frequency"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{System-Recommendation-Movie_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Rating Distribution by Genre}
+\CommentTok{\# The box plots provide a visual summary of the central tendency, dispersion, and skewness of the ratings }
+\CommentTok{\# for each genre. For example, genres like "IMAX" and "Film{-}Noir" show a wider range of ratings with}
+\CommentTok{\# some outliers, indicating more variability in how these movies are rated. Genres like "Action" and }
+\CommentTok{\# "Comedy" have a more concentrated range of ratings with fewer outliers, indicating more consistent }
+\CommentTok{\# ratings within these genres.}
+
+\CommentTok{\# The median rating for most genres appears to be around 3 to 4, showing that the central tendency of }
+\CommentTok{\# ratings is relatively high across genres.}
+
+\CommentTok{\# Create a boxplot of rating distribution by genre}
+\FunctionTok{ggplot}\NormalTok{(edx\_genres, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ genres, }\AttributeTok{y =}\NormalTok{ rating)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"lightgreen"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{coord\_flip}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Rating Distribution by Genre"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Genre"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Rating"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{System-Recommendation-Movie_files/figure-latex/unnamed-chunk-7-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Average Rating per User}
+\CommentTok{\# This plot highlights that users who rate many movies tend to give ratings that are generally}
+\CommentTok{\# higher, clustering around the 3{-}4 range, indicating a tendency towards positive ratings.}
+
+\CommentTok{\# Calculate the average rating per user}
+\NormalTok{average\_rating\_per\_user }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(userId) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{avg\_rating =} \FunctionTok{mean}\NormalTok{(rating), }\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(count)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(count }\SpecialCharTok{\textgreater{}} \DecValTok{100}\NormalTok{)  }\CommentTok{\# Filter for users with more than 100 ratings}
+
+\CommentTok{\# Create the bar chart}
+\FunctionTok{ggplot}\NormalTok{(average\_rating\_per\_user, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(userId, }\SpecialCharTok{{-}}\NormalTok{avg\_rating), }\AttributeTok{y =}\NormalTok{ avg\_rating)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"green"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{coord\_flip}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Average Rating per User (users with more than 100 ratings)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"User"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Average Rating"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{System-Recommendation-Movie_files/figure-latex/unnamed-chunk-7-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Number of Ratings per Year}
+\CommentTok{\# This plot helps to understand the temporal distribution of movie ratings, showing which}
+\CommentTok{\# periods have the highest and lowest number of ratings and providing insights into trends}
+\CommentTok{\# in movie popularity over time.}
+
+\CommentTok{\# Calculate the number of ratings per year}
+\NormalTok{ratings\_per\_year }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(year) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{())}
+
+\CommentTok{\# Create the bar chart}
+\FunctionTok{ggplot}\NormalTok{(ratings\_per\_year, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"lightblue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Number of Ratings per Year"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Year"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Number of Ratings"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{System-Recommendation-Movie_files/figure-latex/unnamed-chunk-7-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# EDA Eploratory Data Analysis }
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"skimr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Installation du package dans 'C:/Users/nadda/AppData/Local/R/win-library/4.2'
+## (car 'lib' n'est pas spécifié)
+\end{verbatim}
+
+\begin{verbatim}
+## le package 'skimr' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+## 
+## Les packages binaires téléchargés sont dans
+##  C:\Users\nadda\AppData\Local\Temp\Rtmpgz7cDr\downloaded_packages
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(skimr)}
+
+\CommentTok{\# Summary of edx data}
+\FunctionTok{summary}\NormalTok{(edx)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      userId         movieId          rating        timestamp        
+##  Min.   :    1   Min.   :    1   Min.   :0.500   Min.   :7.897e+08  
+##  1st Qu.:18122   1st Qu.:  648   1st Qu.:3.000   1st Qu.:9.468e+08  
+##  Median :35743   Median : 1834   Median :4.000   Median :1.035e+09  
+##  Mean   :35869   Mean   : 4120   Mean   :3.512   Mean   :1.033e+09  
+##  3rd Qu.:53602   3rd Qu.: 3624   3rd Qu.:4.000   3rd Qu.:1.127e+09  
+##  Max.   :71567   Max.   :65133   Max.   :5.000   Max.   :1.231e+09  
+##     title              genres               year     
+##  Length:9000061     Length:9000061     Min.   :1915  
+##  Class :character   Class :character   1st Qu.:1987  
+##  Mode  :character   Mode  :character   Median :1994  
+##                                        Mean   :1990  
+##                                        3rd Qu.:1998  
+##                                        Max.   :2008
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# This skim(edx) provides a comprehensive overview of the edx dataset, including the distribution }
+\CommentTok{\# and completeness of the data across different variables. It highlights key statistics such as }
+\CommentTok{\# the mean, median, and percentiles, helping to understand the data\textquotesingle{}s structure and characteristics.}
+\CommentTok{\# Summary using skimr for more details}
+\FunctionTok{skim}\NormalTok{(edx)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{Data summary}\tabularnewline
+\toprule\noalign{}
+\endfirsthead
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Name & edx \\
+Number of rows & 9000061 \\
+Number of columns & 7 \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & \\
+Column type frequency: & \\
+character & 2 \\
+numeric & 5 \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & \\
+Group variables & None \\
+\end{longtable}
+
+\textbf{Variable type: character}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1944}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1389}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1944}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0556}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0556}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0833}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1528}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+skim\_variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_missing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+complete\_rate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+min
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+max
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+empty
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_unique
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+whitespace
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+title & 0 & 1 & 8 & 160 & 0 & 10676 & 0 \\
+genres & 0 & 1 & 3 & 60 & 0 & 797 & 0 \\
+\end{longtable}
+
+\textbf{Variable type: numeric}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1120}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0800}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1120}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1040}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1040}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0960}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0800}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0880}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0880}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0880}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0480}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+skim\_variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_missing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+complete\_rate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+sd
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p25
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p50
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p75
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p100
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+hist
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+userId & 0 & 1 & 3.586890e+04 & 20583.75 & 1.0 & 18122 & 35743 & 53602 &
+71567 & ▇▇▇▇▇ \\
+movieId & 0 & 1 & 4.120230e+03 & 8939.16 & 1.0 & 648 & 1834 & 3624 &
+65133 & ▇▁▁▁▁ \\
+rating & 0 & 1 & 3.510000e+00 & 1.06 & 0.5 & 3 & 4 & 4 & 5 & ▁▂▆▇▅ \\
+timestamp & 0 & 1 & 1.032587e+09 & 115963032.76 & 789652009.0 &
+946763211 & 1035425747 & 1126667472 & 1231131303 & ▅▆▇▇▆ \\
+year & 0 & 1 & 1.990220e+03 & 13.59 & 1915.0 & 1987 & 1994 & 1998 & 2008
+& ▁▁▁▂▇ \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Distribution of ratings}
+\NormalTok{ratings\_summary }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(rating) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(count))}
+
+\FunctionTok{print}\NormalTok{(ratings\_summary)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 2
+##    rating   count
+##     <dbl>   <int>
+##  1    4   2588021
+##  2    3   2121638
+##  3    5   1390541
+##  4    3.5  792037
+##  5    2    710998
+##  6    4.5  526309
+##  7    1    345935
+##  8    2.5  332783
+##  9    1.5  106379
+## 10    0.5   85420
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#  Number of ratings per movie:}
+
+\CommentTok{\# Count ratings per movie}
+\NormalTok{ratings\_per\_movie }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(movieId) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(count))}
+
+\CommentTok{\# Summary statistics for ratings per movie}
+\NormalTok{ratings\_per\_movie\_summary }\OtherTok{\textless{}{-}}\NormalTok{ ratings\_per\_movie }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{min =} \FunctionTok{min}\NormalTok{(count),}
+    \AttributeTok{q1 =} \FunctionTok{quantile}\NormalTok{(count, }\FloatTok{0.25}\NormalTok{),}
+    \AttributeTok{median =} \FunctionTok{median}\NormalTok{(count),}
+    \AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(count),}
+    \AttributeTok{q3 =} \FunctionTok{quantile}\NormalTok{(count, }\FloatTok{0.75}\NormalTok{),}
+    \AttributeTok{max =} \FunctionTok{max}\NormalTok{(count)}
+\NormalTok{  )}
+
+\FunctionTok{print}\NormalTok{(ratings\_per\_movie\_summary)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 6
+##     min    q1 median  mean    q3   max
+##   <int> <dbl>  <int> <dbl> <dbl> <int>
+## 1     1    30    122  843.   563 31336
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#  Number of ratings per user:}
+
+\CommentTok{\# Count ratings per user}
+\NormalTok{ratings\_per\_user }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(userId) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(count))}
+
+\CommentTok{\# Summary statistics for ratings per user}
+\NormalTok{ratings\_per\_user\_summary }\OtherTok{\textless{}{-}}\NormalTok{ ratings\_per\_user }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{min =} \FunctionTok{min}\NormalTok{(count),}
+    \AttributeTok{q1 =} \FunctionTok{quantile}\NormalTok{(count, }\FloatTok{0.25}\NormalTok{),}
+    \AttributeTok{median =} \FunctionTok{median}\NormalTok{(count),}
+    \AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(count),}
+    \AttributeTok{q3 =} \FunctionTok{quantile}\NormalTok{(count, }\FloatTok{0.75}\NormalTok{),}
+    \AttributeTok{max =} \FunctionTok{max}\NormalTok{(count)}
+\NormalTok{  )}
+
+\FunctionTok{print}\NormalTok{(ratings\_per\_user\_summary)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 6
+##     min    q1 median  mean    q3   max
+##   <int> <dbl>  <dbl> <dbl> <dbl> <int>
+## 1    13    32     62  129.   140  6637
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Average ratings by genre:}
+
+
+\CommentTok{\# Separate genres into individual columns}
+\NormalTok{edx\_genres }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{separate\_rows}\NormalTok{(genres, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{|"}\NormalTok{)}
+
+\CommentTok{\# Average ratings by genre}
+\NormalTok{avg\_ratings\_genres }\OtherTok{\textless{}{-}}\NormalTok{ edx\_genres }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(genres) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{avg\_rating =} \FunctionTok{mean}\NormalTok{(rating), }\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(count }\SpecialCharTok{\textgreater{}} \DecValTok{1000}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(avg\_rating)) }\CommentTok{\# Filter genres with less than 1000 ratings and sort by average rating}
+
+\FunctionTok{print}\NormalTok{(avg\_ratings\_genres)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 19 x 3
+##    genres      avg_rating   count
+##    <chr>            <dbl>   <int>
+##  1 Film-Noir         4.01  118394
+##  2 Documentary       3.78   93252
+##  3 War               3.78  511330
+##  4 IMAX              3.76    8190
+##  5 Mystery           3.68  567865
+##  6 Drama             3.67 3909401
+##  7 Crime             3.67 1326917
+##  8 Animation         3.60  467220
+##  9 Musical           3.56  432960
+## 10 Western           3.56  189234
+## 11 Romance           3.55 1712232
+## 12 Thriller          3.51 2325349
+## 13 Fantasy           3.50  925624
+## 14 Adventure         3.49 1908692
+## 15 Comedy            3.44 3541284
+## 16 Action            3.42 2560649
+## 17 Children          3.42  737851
+## 18 Sci-Fi            3.40 1341750
+## 19 Horror            3.27  691407
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Movie Popularity and Rating Analysis}
+
+\CommentTok{\# Most rated movies}
+\NormalTok{most\_rated\_movies }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(movieId, title) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(count)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{slice}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'movieId'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(most\_rated\_movies)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10,677 x 3
+## # Groups:   movieId [10,677]
+##    movieId title                              count
+##      <int> <chr>                              <int>
+##  1       1 Toy Story (1995)                   23826
+##  2       2 Jumanji (1995)                     10717
+##  3       3 Grumpier Old Men (1995)             7053
+##  4       4 Waiting to Exhale (1995)            1579
+##  5       5 Father of the Bride Part II (1995)  6415
+##  6       6 Heat (1995)                        12385
+##  7       7 Sabrina (1995)                      7273
+##  8       8 Tom and Huck (1995)                  811
+##  9       9 Sudden Death (1995)                 2280
+## 10      10 GoldenEye (1995)                   15250
+## # i 10,667 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Least rated movies}
+\NormalTok{least\_rated\_movies }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(movieId, title) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(count) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{slice}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'movieId'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(least\_rated\_movies)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10,677 x 3
+## # Groups:   movieId [10,677]
+##    movieId title                              count
+##      <int> <chr>                              <int>
+##  1       1 Toy Story (1995)                   23826
+##  2       2 Jumanji (1995)                     10717
+##  3       3 Grumpier Old Men (1995)             7053
+##  4       4 Waiting to Exhale (1995)            1579
+##  5       5 Father of the Bride Part II (1995)  6415
+##  6       6 Heat (1995)                        12385
+##  7       7 Sabrina (1995)                      7273
+##  8       8 Tom and Huck (1995)                  811
+##  9       9 Sudden Death (1995)                 2280
+## 10      10 GoldenEye (1995)                   15250
+## # i 10,667 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Average rating per movie}
+\NormalTok{average\_rating\_per\_movie }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(movieId, title) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{avg\_rating =} \FunctionTok{mean}\NormalTok{(rating), }\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(avg\_rating))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'movieId'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(average\_rating\_per\_movie)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10,677 x 4
+## # Groups:   movieId [10,677]
+##    movieId title                                                avg_rating count
+##      <int> <chr>                                                     <dbl> <int>
+##  1    3226 Hellhounds on My Trail (1999)                              5        1
+##  2   33264 Satan's Tango (Sátántangó) (1994)                          5        2
+##  3   42783 Shadows of Forgotten Ancestors (1964)                      5        1
+##  4   51209 Fighting Elegy (Kenka erejii) (1966)                       5        1
+##  5   53355 Sun Alley (Sonnenallee) (1999)                             5        1
+##  6   64275 Blue Light, The (Das Blaue Licht) (1932)                   5        1
+##  7   65001 Constantine's Sword (2007)                                 5        1
+##  8   26048 Human Condition II, The (Ningen no joken II) (1959)        4.83     3
+##  9    5194 Who's Singin' Over There? (a.k.a. Who Sings Over Th~       4.75     4
+## 10   26073 Human Condition III, The (Ningen no joken III) (196~       4.75     4
+## # i 10,667 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Average rating per user}
+\NormalTok{average\_rating\_per\_user }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(userId) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{avg\_rating =} \FunctionTok{mean}\NormalTok{(rating), }\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(avg\_rating))}
+
+\FunctionTok{print}\NormalTok{(average\_rating\_per\_user)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 69,878 x 3
+##    userId avg_rating count
+##     <int>      <dbl> <int>
+##  1      1          5    21
+##  2   1686          5    21
+##  3   7984          5    18
+##  4  11884          5    19
+##  5  13027          5    31
+##  6  13513          5    19
+##  7  13524          5    19
+##  8  15575          5    28
+##  9  18965          5    50
+## 10  22045          5    22
+## # i 69,868 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Number of movies and ratings per genre}
+\NormalTok{movies\_per\_genre }\OtherTok{\textless{}{-}}\NormalTok{ edx\_genres }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(genres) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{num\_movies =} \FunctionTok{n\_distinct}\NormalTok{(movieId), }\AttributeTok{num\_ratings =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(num\_ratings))}
+
+\FunctionTok{print}\NormalTok{(movies\_per\_genre)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 20 x 3
+##    genres             num_movies num_ratings
+##    <chr>                   <int>       <int>
+##  1 Drama                    5336     3909401
+##  2 Comedy                   3703     3541284
+##  3 Action                   1473     2560649
+##  4 Thriller                 1705     2325349
+##  5 Adventure                1025     1908692
+##  6 Romance                  1685     1712232
+##  7 Sci-Fi                    754     1341750
+##  8 Crime                    1117     1326917
+##  9 Fantasy                   543      925624
+## 10 Children                  528      737851
+## 11 Horror                   1013      691407
+## 12 Mystery                   509      567865
+## 13 War                       510      511330
+## 14 Animation                 286      467220
+## 15 Musical                   436      432960
+## 16 Western                   275      189234
+## 17 Film-Noir                 148      118394
+## 18 Documentary               481       93252
+## 19 IMAX                       29        8190
+## 20 (no genres listed)          1           6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Popularity and average rating by genre over time}
+\NormalTok{genre\_trends }\OtherTok{\textless{}{-}}\NormalTok{ edx\_genres }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{year =} \FunctionTok{format}\NormalTok{(}\FunctionTok{as.POSIXct}\NormalTok{(timestamp, }\AttributeTok{origin =} \StringTok{"1970{-}01{-}01"}\NormalTok{), }\StringTok{"\%Y"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(genres, year) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{(), }\AttributeTok{avg\_rating =} \FunctionTok{mean}\NormalTok{(rating)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(genres, year)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'genres'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(genre\_trends)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 273 x 4
+## # Groups:   genres [20]
+##    genres             year   count avg_rating
+##    <chr>              <chr>  <int>      <dbl>
+##  1 (no genres listed) 2004       2       2.75
+##  2 (no genres listed) 2007       3       4   
+##  3 (no genres listed) 2008       1       3.5 
+##  4 Action             1995       1       3   
+##  5 Action             1996  298067       3.44
+##  6 Action             1997  116638       3.54
+##  7 Action             1998   49472       3.44
+##  8 Action             1999  175347       3.45
+##  9 Action             2000  297280       3.47
+## 10 Action             2001  181575       3.46
+## # i 263 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Trends in the number of ratings over time}
+\CommentTok{\# Ratings per month}
+\NormalTok{ratings\_per\_month }\OtherTok{\textless{}{-}}\NormalTok{ edx }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{month =} \FunctionTok{format}\NormalTok{(}\FunctionTok{as.POSIXct}\NormalTok{(timestamp, }\AttributeTok{origin =} \StringTok{"1970{-}01{-}01"}\NormalTok{), }\StringTok{"\%Y{-}\%m"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(month) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(month)}
+
+\FunctionTok{print}\NormalTok{(ratings\_per\_month)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 157 x 2
+##    month    count
+##    <chr>    <int>
+##  1 1995-01      2
+##  2 1996-01     18
+##  3 1996-02    690
+##  4 1996-03   5503
+##  5 1996-04  31648
+##  6 1996-05 111140
+##  7 1996-06 148606
+##  8 1996-07 128038
+##  9 1996-08 129006
+## 10 1996-09  87712
+## # i 147 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Check for missing values}
+\NormalTok{missing\_values }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(edx, }\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(x)))}
+
+\FunctionTok{print}\NormalTok{(missing\_values)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    userId   movieId    rating timestamp     title    genres      year 
+##         0         0         0         0         0         0         0
+\end{verbatim}
+
+\end{document}
